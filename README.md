@@ -5,7 +5,7 @@ simple-dataset
 
 ## 使用
 
-    <script src="simple-dataset.js"></script>
+    <script src="simple-dataset.min.js"></script>
 
 ## API
 
