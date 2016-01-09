@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+<div id="box" data-title-Name="titleName"></div>
+<script src="simple-dataset.js"></script>
+<script>
+    var box = document.getElementById("box");
+
+    // 获取 dataset 对象
+    console.log(box.getDataset()); //=> {titleName: "title"}
+
+    // 通过键值对的方式给 dataset 赋值
+    box.setDataset("myAge",24);
+    console.log(box.getDataset()); //=> {titleName: "title", myAge: 24}
+
+    //通过json对象的方式给 dataset 赋值
+    box.setDataset({
+        "myName": "莫声谷",
+        "myGender": 0,
+        "myEmailCode": "simlesos囧gmail.com"
+    });
+    console.log(box.getDataset()); //=> {titleName: "title", myAge: "24", myName: "莫声谷", myGender: "0", myEmailCode: "simlesos囧gmail.com"}
+
+    // 自动处理成 data-.* 类型的attr
+    console.log(box.attributes); //=> NamedNodeMap {0: id, 1: data-title-name, 2: data-my-age, 3: data-my-name, 4: data-my-gender, 5: data-my-email-code}
+
+    // 删除 data-title-name 属性
+    box.removeDataset("titleName");
+    console.log(box.getDataset()); //=> {myAge: "24", myName: "莫声谷", myGender: "0", myEmailCode: "simlesos囧gmail.com"}
+
+    //最后输出
+    console.log(box.attributes); //=> {0: id, 1: data-my-age, 2: data-my-name, 3: data-my-gender, 4: data-my-email-code}
+
+</script>
+</body>
+</html>
